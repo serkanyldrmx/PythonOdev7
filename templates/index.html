@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödev 7</title>
+</head>
+<body>
+    <h1>İsim: {{ name }}</h1>
+    <h1>Soyisim: {{ surname }}</h1>
+    <h1>Öğrenci Numarası: {{ student_number }}</h1>
+
+    {% if plot_filename %}
+    <p>Plot Filename: {{ plot_filename }}</p>
+    <p>Random Value: {{ random }}</p>
+    <img src="{{ url_for('serve_file', filename=plot_filename) }}?{{ random }}" alt="Scatter Plot">
+    {% else %}
+    <p>Henüz görsel oluşturulmadı.</p>
+    {% endif %}
+    
+    <form action="{{ url_for('new_plot') }}">
+        <button type="submit">Yeni Görsel Oluştur</button>
+    </form>
+</body>
+</html>
